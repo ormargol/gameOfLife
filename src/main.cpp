@@ -16,15 +16,15 @@
 
 int main(int argc, char** argv)
 {
-	Cell matrix[5][5];
-	int options[9][2] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 0}, {0, 1}, {1, -1}, {1, 0}, {1,1 }};
+	Cell matrix[10][10];
+	int options[8][2] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1,1 }};
 	int i, j, k, opti, optj;
-	for (i = 0; i < 5; i++) {
-		for (j = 0; j < 5; j++) {
+	for (i = 0; i < 10; i++) {
+		for (j = 0; j < 10; j++) {
 			for (k = 0; k < 8; k++) {
 				opti = i + options[k][0];
 				optj = j + options[k][1];
-				if (opti >= 0 && opti < 5 && optj >= 0 && optj < 5) {
+				if (opti >= 0 && opti < 10 && optj >= 0 && optj < 10) {
 					matrix[i][j].addNeighbor(&matrix[opti][optj]);
 				}
 			}
@@ -35,8 +35,8 @@ int main(int argc, char** argv)
 	matrix[2][3].Live();
 	while (1) {
 		system("clear");
-		for (i = 0; i < 5; i++) {
-			for (j = 0; j < 5; j++) {
+		for (i = 0; i < 10; i++) {
+			for (j = 0; j < 10; j++) {
 				matrix[i][j].Print();
 				matrix[i][j].EvaluateNewStatus();
 			}
