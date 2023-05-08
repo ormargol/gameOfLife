@@ -3,7 +3,7 @@
 
 Cell::Cell()
 {
-	status = LIVE;
+	status = DEAD;
 }
 
 Cell::Cell(CELL_STATUS status)
