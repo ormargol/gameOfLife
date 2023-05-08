@@ -10,11 +10,14 @@ class Cell {
 		CELL_STATUS nextStatus;
 		
 	public:
+		Cell();
 		Cell(CELL_STATUS status);
 		RC addNeighbor(Cell* neighbor);
 		RC EvaluateNewStatus();
 		RC UpdateNewStatus();
 		RC Print();
+		RC Live() { status = LIVE; }
+		RC Die() { status = DEAD; }
 		std::list<Cell*> getNeighbors();
 		CELL_STATUS getStatus();
 		CELL_STATUS getNextStatus();

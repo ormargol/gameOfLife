@@ -10,4 +10,5 @@ add_library(game SHARED src/game.cpp)
 add_executable(app src/main.cpp)
 add_executable(runTests src/tests.cpp)
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread cell)
+target_link_libraries(app ${GTEST_LIBRARIES} pthread cell)
 

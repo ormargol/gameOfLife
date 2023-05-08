@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "cell.hpp"
 
+Cell::Cell()
+{
+	status = LIVE;
+}
+
 Cell::Cell(CELL_STATUS status)
 {
 	this->status = status;
