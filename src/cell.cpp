@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "cell.hpp"
 
 Cell::Cell(CELL_STATUS status)
@@ -11,7 +12,7 @@ RC Cell::addNeighbor(Cell* neighbor)
 	return GOOD;
 }
 
-CELL_STATUS Cell::EvaluateNewStatus()
+RC Cell::EvaluateNewStatus()
 {
 	int live_neighbors = 0;
 	std::list<Cell*>::iterator it;
@@ -25,34 +26,37 @@ CELL_STATUS Cell::EvaluateNewStatus()
 	{
 		if (live_neighbors < 2 || live_neighbors > 3)
 		{
-			return DEAD;
+			nextStatus = DEAD;
 		}
 		else
 		{
-			return LIVE;
+			nextStatus = LIVE;
 		}
 	}
 	else
 	{
 		if (live_neighbors == 3)
 		{
-			return LIVE;
+			nextStatus = LIVE;
 		}
 		else
 		{
-			return DEAD;
+			nextStatus = DEAD;
 		}
 	}
+	return GOOD;
 }
 
 RC Cell::UpdateNewStatus()
 {
-	
+	status = nextStatus;
 }
 
 RC Cell::Print()
 {
-	
+	if (status == LIVE) { printf("%c", (char)219); }
+	else { printf(" "); }
+	return GOOD;
 }
 
 std::list<Cell*> Cell::getNeighbors()

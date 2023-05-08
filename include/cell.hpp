@@ -12,7 +12,7 @@ class Cell {
 	public:
 		Cell(CELL_STATUS status);
 		RC addNeighbor(Cell* neighbor);
-		CELL_STATUS EvaluateNewStatus();
+		RC EvaluateNewStatus();
 		RC UpdateNewStatus();
 		RC Print();
 		std::list<Cell*> getNeighbors();

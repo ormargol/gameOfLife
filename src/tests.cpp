@@ -4,16 +4,20 @@
 
 TEST(EvaluateNewStatus, NoNeighbors) {
     Cell c1(LIVE);
-	ASSERT_EQ(c1.EvaluateNewStatus(), DEAD);
+    ASSERT_EQ(c1.EvaluateNewStatus(), GOOD);
+    ASSERT_EQ(c1.getNextStatus(), DEAD);
     Cell c2(DEAD);
-	ASSERT_EQ(c1.EvaluateNewStatus(), DEAD);
+    ASSERT_EQ(c1.EvaluateNewStatus(), GOOD);
+    ASSERT_EQ(c1.getNextStatus(), DEAD);
 }
 TEST(EvaluateNewStatus, oneNeighbor) {
     Cell c1(LIVE), c1n1(LIVE);
 	c1.addNeighbor(&c1n1);
-	ASSERT_EQ(c1.EvaluateNewStatus(), DEAD);
+	ASSERT_EQ(c1.EvaluateNewStatus(), GOOD);
+	ASSERT_EQ(c1.getNextStatus(), DEAD);
     Cell c2(DEAD);
-	ASSERT_EQ(c1.EvaluateNewStatus(), DEAD);
+	ASSERT_EQ(c1.EvaluateNewStatus(), GOOD);
+	ASSERT_EQ(c1.getNextStatus(), DEAD);
 }
 
 TEST(EvaluateNewStatus, allCases) {// count, count of live
@@ -50,11 +54,13 @@ TEST(EvaluateNewStatus, allCases) {// count, count of live
 				}
 				if (statuses[status_i] == LIVE)
 				{
-				ASSERT_EQ(c1.EvaluateNewStatus(), newExpectedStatusForLiveCell[neibors_count][live_neibors_count]);
+					ASSERT_EQ(c1.EvaluateNewStatus(), GOOD);
+					ASSERT_EQ(c1.getNextStatus(), newExpectedStatusForLiveCell[neibors_count][live_neibors_count]);
 				}
 				else
 				{
-					ASSERT_EQ(c1.EvaluateNewStatus(), newExpectedStatusForDeadCell[neibors_count][live_neibors_count]);
+					ASSERT_EQ(c1.EvaluateNewStatus(), GOOD);
+					ASSERT_EQ(c1.getNextStatus(), newExpectedStatusForDeadCell[neibors_count][live_neibors_count]);
 				}
 			}
 		}
